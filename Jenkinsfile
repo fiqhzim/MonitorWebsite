@@ -22,17 +22,17 @@ pipeline{
         
         stage('Docker Build'){
             steps{
-                sh "docker build . -t kammana/devbuild:${DOCKER_TAG} "
+                sh "docker build . -t fiqhzim/devbuild:${DOCKER_TAG} "
             }
         }
         
         stage('DockerHub Push'){
             steps{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-                    sh "docker login -u kammana -p ${dockerHubPwd}"
+                    sh "docker login -u fiqhzim -p ${dockerHubPwd}"
                 }
                 
-                sh "docker push kammana/devbuild:${DOCKER_TAG} "
+                sh "docker push fiqhzim/devbuild:${DOCKER_TAG} "
             }
         }
         
