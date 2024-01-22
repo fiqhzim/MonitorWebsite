@@ -22,7 +22,7 @@ pipeline{
         
         stage('Docker Build'){
             steps{
-                sh "docker build . -t fiqhzim/devbuild:${DOCKER_TAG} "
+                sh "docker build . -t fiqhzim/website:${DOCKER_TAG} "
             }
         }
         
@@ -32,7 +32,7 @@ pipeline{
                     sh "docker login -u fiqhzim -p ${dockerHubPwd}"
                 }
                 
-                sh "docker push fiqhzim/devbuild:${DOCKER_TAG} "
+                sh "docker push fiqhzim/website:${DOCKER_TAG} "
             }
         }
         
